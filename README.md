@@ -1,5 +1,5 @@
 # Camcookie Games
-By:  [Google](https://github.com/camcookie876/ "@camcookie876")
+By:  [@camcookie876](https://github.com/camcookie876/ "@camcookie876")
 
 # EVENTS
 
