@@ -1,5 +1,5 @@
 # Camcookie Games
-### By: @camcookie876
+By: @camcookie876
 
 # EVENTS
 
