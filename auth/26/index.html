@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Signing In…</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<script>
+  const supabase = supabase.createClient(
+    "https://bafcfszceittoberpgdz.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ5cHlkYXhmYnRraHR5cG1ycmJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk5Nzk3MzcsImV4cCI6MjA4NTU1NTczN30.oNLfu8z9yn-O1uUCLBJIkW8Yp89GpCfiroSmjG_wyV4"
+  );
+
+  const params = new URLSearchParams(location.search);
+  const token = params.get("token");
+  const id = params.get("id");
+  const username = params.get("username");
+
+  async function verify() {
+    if (!token || !id) {
+      alert("Invalid login redirect.");
+      location.href = "https://camcookieg.github.io/";
+      return;
+    }
+
+    // Verify token with Supabase
+    const { data, error } = await supabase.auth.getUser(token);
+
+    if (error || !data?.user) {
+      alert("Login expired. Please sign in again.");
+      location.href = "https://camcookie876.github.io/connect/26/";
+      return;
+    }
+
+    // Store locally
+    localStorage.setItem("camcookie_user_id", id);
+    localStorage.setItem("camcookie_username", username);
+    localStorage.setItem("camcookie_token", token);
+
+    // Continue to Games homepage
+    location.href = "https://camcookieg.github.io/game/";
+  }
+
+  verify();
+</script>
+</body>
+</html>
